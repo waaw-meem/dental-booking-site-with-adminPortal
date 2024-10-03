@@ -1,0 +1,424 @@
+<section>
+    <div class="container g-0 viewProfile-main">
+      <!-- <div class="row g-0"> -->
+      <div class="viewSection">
+        <div class="view-left">
+          <div class="tab-main">
+            <p-breadcrumb class="breadCrumb" [model]="items"></p-breadcrumb>
+          </div>
+          <div class="drDeatil-main">
+            <div class="card-body-left">
+              <div class="card-img">
+                <img src="assets\Images\profile.png" alt="" />
+              </div>
+              <div class="card-content">
+                <strong>DR.Afshan</strong>
+                <span>Dentist, Orthodontist</span>
+                <span>BDS, SLE, BLS, C-Implant, C-Ortho</span>
+                <div class="experience">
+                  <div class="experience-sub">
+                    <strong>Under 15 Min</strong>
+                    <span>Wait Time</span>
+                  </div>
+                  <div class="experience-sub1">
+                    <strong>25 Years</strong>
+                    <span>Experience</span>
+                  </div>
+                  <div class="experience-sub">
+                    <strong>99% (138)</strong>
+                    <span>Satisfied Patients</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+  
+            <div class="review-main">
+              <strong
+                ><i class="bx bxs-star"></i>Dr. Nazifa Mubashir's Reviews
+                (599)</strong
+              >
+              <div class="review-satisfy">
+                <div class="satisfy-left">
+                  <span>99%</span>
+                  <p>Satisfied out of 599 patients</p>
+                </div>
+                <div class="satisfy-right">
+                  <div class="satisfy-progress">
+                    <span>Doctor Checkup</span>
+                    <div class="progress">
+                      <div
+                        class="progress-bar"
+                        role="progressbar"
+                        style="width: 25%"
+                        aria-valuenow="25"
+                        aria-valuemin="0"
+                        aria-valuemax="100"
+                      >
+                        25%
+                      </div>
+                    </div>
+                  </div>
+                  <div class="satisfy-progress">
+                    <span>Doctor Checkup</span>
+                    <div class="progress">
+                      <div
+                        class="progress-bar"
+                        role="progressbar"
+                        style="width: 25%"
+                        aria-valuenow="25"
+                        aria-valuemin="0"
+                        aria-valuemax="100"
+                      >
+                        25%
+                      </div>
+                    </div>
+                  </div>
+                  <div class="satisfy-progress">
+                    <span>Doctor Checkup</span>
+                    <div class="progress">
+                      <div
+                        class="progress-bar"
+                        role="progressbar"
+                        style="width: 25%"
+                        aria-valuenow="25"
+                        aria-valuemin="0"
+                        aria-valuemax="100"
+                      >
+                        25%
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="review-comment">
+                <p>
+                  " Doc was amazing..very kind and professionally very very sound.
+                  she was great experience and well doctor "
+                </p>
+                <span>Verified patient: S******a . 3 years ago</span>
+              </div>
+              <button>Read all reviews</button>
+            </div>
+  
+            <div class="otherClinic-main">
+              <strong>Other Clinics</strong>
+              <div class="otherClinic-card">
+                <div class="otherClinic-body">
+                  <div class="otherClinic-cardLeft">
+                    <strong>Medilink Consultant Clinics</strong>
+                    <span
+                      >Suite # 103, 1st Floor, The Palaza Shopping Mall, opp.Do
+                      Talwar, Main Clifton Road, Karachi.</span
+                    >
+                    <a><i class="bx bxs-location-plus"></i>View on map</a>
+                  </div>
+                  <div class="otherClinic-cardRight">
+                    <button><i class="bx bxs-phone"></i>Call Helpline</button>
+                  </div>
+                </div>
+  
+                <span>$ 200.22</span>
+                <div class="otherClinic-collapse">
+                  <div class="otherClinic0collapseLeft">
+                    <span *ngIf="!viewTimings">Today</span>
+                    <span *ngIf="viewTimings">Monday</span>
+                    <span *ngIf="viewTimings">Wednesday</span>
+                    <span *ngIf="viewTimings">Friday</span>
+                  </div>
+                  <div class="otherClinic0collapseLeft">
+                    <span>03:00 PM - 05:00 PM</span>
+                    <span *ngIf="viewTimings">03:00 PM - 05:00 PM</span>
+                    <span *ngIf="viewTimings">03:00 PM - 05:00 PM</span>
+                  </div>
+  
+                  <a *ngIf="!viewTimings" (click)="viewAllTimgs()"
+                    >View less timings<i class="bx bx-chevron-down"></i
+                  ></a>
+                  <a *ngIf="viewTimings" (click)="viewAllTimgs()"
+                    >View all timings<i class="bx bx-chevron-up"></i
+                  ></a>
+                </div>
+              </div>
+            </div>
+  
+            <div class="services">
+              <div class="service-header">
+                <strong>Services</strong>
+                <a
+                  *ngIf="serviceList.length > 6"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseExample"
+                  aria-expanded="false"
+                  aria-controls="collapseExample"
+                  >View all</a
+                >
+              </div>
+              <div class="service-body">
+                <ul *ngFor="let list of serviceList.slice(0, 6)">
+                  <li>{{ list.service }}</li>
+                </ul>
+              </div>
+              <div class="collapse" id="collapseExample">
+                <div class="service-body-view">
+                  <ul *ngFor="let list of serviceList.slice(6)">
+                    <li>{{ list.service }}</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+  
+            <div class="services">
+              <div class="service-header">
+                <strong>Conditions Treated</strong>
+                <a *ngIf="serviceList.length > 6">View all</a>
+              </div>
+              <div class="service-body">
+                <ul *ngFor="let list of serviceList.slice(0, 6)">
+                  <li>{{ list.service }}</li>
+                </ul>
+              </div>
+              <div class="service-body-view">
+                <ul *ngFor="let list of serviceList.slice(6)">
+                  <li>{{ list.service }}</li>
+                </ul>
+              </div>
+            </div>
+  
+            <div class="services">
+              <div class="service-header">
+                <strong>Education</strong>
+                <a *ngIf="serviceList.length > 6">View all</a>
+              </div>
+              <div class="service-body">
+                <ul *ngFor="let list of serviceList.slice(0, 6)">
+                  <li>{{ list.service }}</li>
+                </ul>
+              </div>
+              <div class="service-body-view">
+                <ul *ngFor="let list of serviceList.slice(6)">
+                  <li>{{ list.service }}</li>
+                </ul>
+              </div>
+            </div>
+  
+            <div class="services">
+              <div class="service-header">
+                <strong>Specialization</strong>
+                <a *ngIf="serviceList.length > 6">View all</a>
+              </div>
+              <div class="service-body">
+                <ul *ngFor="let list of serviceList.slice(0, 6)">
+                  <li>{{ list.service }}</li>
+                </ul>
+              </div>
+              <div class="service-body-view">
+                <ul *ngFor="let list of serviceList.slice(6)">
+                  <li>{{ list.service }}</li>
+                </ul>
+              </div>
+            </div>
+  
+            <div class="services">
+              <div class="service-header">
+                <strong>Experience</strong>
+                <a *ngIf="serviceList.length > 6">View all</a>
+              </div>
+              <div class="service-body-experience">
+                <ul *ngFor="let list of serviceList.slice(0, 6)">
+                  <li>{{ list.service }}</li>
+                </ul>
+              </div>
+              <div class="service-body-experience">
+                <ul *ngFor="let list of serviceList.slice(6)">
+                  <li>{{ list.service }}</li>
+                </ul>
+              </div>
+            </div>
+  
+            <div class="services">
+              <div class="service-header">
+                <strong>Award & Recognitions</strong>
+                <a *ngIf="serviceList.length > 6">View all</a>
+              </div>
+              <div class="service-body-experience">
+                <ul *ngFor="let list of serviceList.slice(0, 6)">
+                  <li>{{ list.service }}</li>
+                </ul>
+              </div>
+              <div class="service-body-experience">
+                <ul *ngFor="let list of serviceList.slice(6)">
+                  <li>{{ list.service }}</li>
+                </ul>
+              </div>
+            </div>
+  
+            <div class="services">
+              <div class="service-header">
+                <strong>About Dr. Nazifa Mubashir</strong>
+              </div>
+              <div class="service-body-experience">
+                <span
+                  >Dr. Nazifa Mubashir is an obstetrician and gynecologist. After
+                  graduating from Dow Medical College she undertook postgraduate
+                  training in Obstetrics and Gynecology in Pakistan in a total
+                  year of 15 years. She also worked at centers in the UK. Her
+                  areas of expertise include: acute gynecology and early
+                  pregnancy, advanced antenatal practice, maternal medicine,
+                  subfertility and reproductive health, benign abdominal surgery
+                  (open and laparoscopic), benign gynecological surgery
+                  (Hysteroscopy) and advanced labour ward practice.</span
+                >
+              </div>
+            </div>
+  
+            <div class="services">
+              <div class="service-header pb-3">
+                <strong>Reviews About Dr.Nazifa Mubashir</strong>
+              </div>
+              <div class="review-comment mb-3">
+                <p>
+                  " Doc was amazing..very kind and professionally very very sound.
+                  she was great experience and well doctor "
+                </p>
+                <span>Verified patient: S******a . 3 years ago</span>
+              </div>
+              <div class="review-comment mb-3">
+                <p>
+                  " Doc was amazing..very kind and professionally very very sound.
+                  she was great experience and well doctor "
+                </p>
+                <span>Verified patient: S******a . 3 years ago</span>
+              </div>
+              <div class="review-comment mb-3">
+                <p>
+                  " Doc was amazing..very kind and professionally very very sound.
+                  she was great experience and well doctor "
+                </p>
+                <span>Verified patient: S******a . 3 years ago</span>
+              </div>
+              <div class="review-comment mb-3">
+                <p>
+                  " Doc was amazing..very kind and professionally very very sound.
+                  she was great experience and well doctor "
+                </p>
+                <span>Verified patient: S******a . 3 years ago</span>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+        <div class="view-right">
+          <div
+            class="drConsultation-card"
+            [ngClass]="{ scrollToFixedActive: OrderSummaryFixed == true }"
+          >
+          <div class="card">
+            <div class="card-header">
+              <strong>South City Hospital</strong>
+            </div>
+            <div class="card-body">
+              <div class="fee">
+                <span>Fee:</span>
+                <strong>$ 200.2</strong>
+              </div>
+              <div class="fee">
+                <span>Address:</span>
+                <strong
+                  ><i class="bx bx-location-plus"></i>Use phone/laptop for video
+                  call</strong
+                >
+              </div>
+              <div class="timing">
+                <span><i class="bx bxs-time-five"></i>Available today</span>
+                <strong
+                data-bs-toggle="collapse"
+                data-bs-target="#viewCardTiming2"
+                aria-expanded="false"
+                aria-controls="viewCardTiming2"
+                  >06:00 PM - 08:00 PM<i class="bx bx-chevron-down"></i
+                ></strong>
+              </div>
+              <div class="collapse" id="viewCardTiming2">
+                <div class="weeklyTiming" >
+                  <!-- <div class="weeklyTiming-left"> -->
+                  <ul>
+                    <li>Monday</li>
+                    <li>Tuesday</li>
+                    <li>Wednesday</li>
+                    <li>Thursday</li>
+                    <li>Friday</li>
+                  </ul>
+                  <!-- </div> -->
+                  <!-- <div class="weeklyTiming-right"> -->
+                  <ul>
+                    <li>05:30 PM - 07:00 PM</li>
+                    <li>05:30 PM - 07:00 PM</li>
+                    <li>05:30 PM - 07:00 PM</li>
+                    <li>05:30 PM - 07:00 PM</li>
+                    <li>05:30 PM - 07:00 PM</li>
+                  </ul>
+              </div>
+                  <!-- </div> -->
+                </div>
+              <button class="bookAppointment-button">Book Appointment</button>
+            </div>
+          </div>
+            <div class="card">
+              <div class="card-header">
+                <i class="bx bxs-video"></i>
+                <strong>Online Video Consultation</strong>
+              </div>
+              <div class="card-body">
+                <div class="fee">
+                  <span>Fee:</span>
+                  <strong>$ 200.2</strong>
+                </div>
+                <div class="fee">
+                  <span>Address:</span>
+                  <strong>Use phone/laptop for video call</strong>
+                </div>
+                <div class="timing">
+                  <span><i class="bx bxs-time-five"></i>Available today</span>
+                  <strong
+                    data-bs-toggle="collapse"
+                    data-bs-target="#viewCardTiming"
+                    aria-expanded="false"
+                    aria-controls="viewCardTiming"
+                    >06:00 PM - 08:00 PM<i class="bx bx-chevron-down"></i
+                  ></strong>
+                </div>
+                <div class="collapse" id="viewCardTiming">
+                <div class="weeklyTiming" >
+                  <!-- <div class="weeklyTiming-left"> -->
+                  <ul>
+                    <li>Monday</li>
+                    <li>Tuesday</li>
+                    <li>Wednesday</li>
+                    <li>Thursday</li>
+                    <li>Friday</li>
+                  </ul>
+                  <!-- </div> -->
+                  <!-- <div class="weeklyTiming-right"> -->
+                  <ul>
+                    <li>05:30 PM - 07:00 PM</li>
+                    <li>05:30 PM - 07:00 PM</li>
+                    <li>05:30 PM - 07:00 PM</li>
+                    <li>05:30 PM - 07:00 PM</li>
+                    <li>05:30 PM - 07:00 PM</li>
+                  </ul>
+              </div>
+                  <!-- </div> -->
+                </div>
+                <button>
+                  <i class="bx bxs-video"></i>Book Video Consultation
+                </button>
+              </div>
+            </div>
+  
+          </div>
+        </div>
+      </div>
+      <!-- </div> -->
+    </div>
+  </section>
+  

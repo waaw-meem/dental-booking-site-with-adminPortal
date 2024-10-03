@@ -1,0 +1,433 @@
+.main {
+  margin-top: 60px;
+  overflow: hidden;
+  background-color: #fafafa;
+}
+.card {
+  padding: 20px 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 60px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+  border: none;
+}
+.card-header {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 15px;
+}
+.card-header strong {
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+.sub-header {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 20px;
+}
+.sub-header span {
+  border: none;
+  background-color: var(--light-blue);
+  padding: 5px 10px;
+  border-radius: 0.3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+.sub-header span i {
+  font-size: 1.3rem;
+  color: var(--sky-blue);
+}
+.sub-header p {
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: 600;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 5px;
+  color: var(--font-gray);
+  cursor: pointer;
+}
+.sub-header p i {
+  font-size: 1.3rem;
+}
+
+.card-body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 15px;
+  width: 100%;
+}
+.card-body strong {
+  font-weight: 600;
+  font-size: 1.2rem;
+  position: relative;
+}
+.card-body strong i {
+  position: absolute;
+  top: 0;
+  left: -35%;
+  transform: translate(35%, 0);
+  font-size: 1.8rem;
+  color: var(--font-gray);
+}
+.card-body input {
+  width: 100%;
+  border-bottom: 1px solid var(--sky-blue);
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  outline: none;
+  font-size: 1.5rem;
+  padding: 5px 0;
+  background-color: #fff;
+  /* color: black; */
+}
+.card-body span {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 5px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--font-gray);
+}
+.card-body span i {
+  font-size: 1rem;
+}
+.sub-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 10px;
+  width: 100%;
+}
+.sub-body strong {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--font-gray);
+}
+.sub-body span {
+  width: 100%;
+  border: 1px solid var(--gray-border);
+  border-radius: 0.3rem;
+  padding: 10px;
+  background-color: #f2f2f2;
+  color: black;
+  font-size: 0.9rem;
+  font-weight: 400;
+}
+.card-footer {
+  background-color: transparent;
+  border: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 15px;
+  width: 100%;
+}
+.card-footer strong {
+  font-weight: 600;
+  font-size: 1.2rem;
+  position: relative;
+}
+.card-footer strong i {
+  position: absolute;
+  top: 0;
+  left: -20%;
+  transform: translate(20%, 0);
+  font-size: 1.8rem;
+  color: var(--font-gray);
+}
+.sub-footer {
+  width: 100%;
+  border: 1px solid var(--sky-blue);
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  border-radius: 0.3rem;
+  background-color: var(--light-blue);
+}
+.sub-footer span {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9rem;
+}
+.sub-footer span input[type="radio"] {
+  accent-color: var(--sky-blue);
+}
+
+.card-profile {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 20px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+  border: none;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 0.2rem;
+}
+.card-body-profile {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 20px;
+}
+/* .body-profile{
+    border-radius: 5rem;
+    overflow: hidden;
+} */
+.body-profile img {
+  width: 60px;
+  height: auto;
+  border-radius: 5rem;
+}
+.profile-tittle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 5px;
+}
+.profile-tittle strong {
+  margin-bottom: 10px;
+}
+.profile-tittle span {
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.profile-tittle span strong {
+  margin: 0;
+}
+.profile-tittle p {
+  margin-top: 10px;
+  border-radius: 1px solid red;
+  border-radius: 1rem;
+  background-color: #f2f2f2;
+  padding: 8px 10px;
+  width: 100%;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.profile-tittle p i {
+  font-size: 1.4rem;
+}
+.card-footer button {
+  width: 100%;
+  background-color: var(--red);
+  border: none;
+  color: #fff;
+  padding: 12px;
+  font-weight: 600;
+  border-radius: 0.2rem;
+}
+/* ----------Modal---------------------------------- */
+.confirmModal .p-dialog::ng-deep.p-dialog .p-dialog-header {
+  display: none;
+}
+ng-deep.p-dialog .p-dialog-content:last-of-type {
+  border-radius: 6px !important;
+}
+::ng-deep.p-dialog .p-dialog-content {
+  padding: 20px;
+  border: 1px solid red;
+}
+/* .p-dialog .p-dialog-content {
+  background: #ffffff;
+  color: #495057;
+  padding: 0 1.5rem 2rem 1.5rem;
+} */
+.confirm {
+  /* border: 1px solid red; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--font-gray);
+}
+.confirm i {
+  font-size: 3rem;
+  color: var(--sky-blue);
+}
+
+.someOne-main {
+  /* border: 1px solid red; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 20px;
+}
+.patientName-main {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+}
+.patient-input {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 10px;
+  flex-basis: 50%;
+  width: 100%;
+}
+.patient-input label {
+  font-weight: 600;
+  color: black;
+}
+.patient-input input {
+  width: 100%;
+  border-radius: 0.2rem;
+  border: 1px solid var(--gray-border);
+  padding: 8px 10px;
+  outline: none;
+}
+.patient-input input:focus {
+  border: 1px solid var(--sky-blue);
+}
+.gender-input {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 15px;
+}
+.gender-input span {
+  background-color: var(--light-blue);
+  padding: 5px 10px;
+  border-radius: 0.3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+.gender-input span i {
+  font-size: 1.3rem;
+  color: var(--sky-blue);
+}
+.phone-input {
+  width: 100%;
+  border: 1px solid var(--gray-border);
+  border-radius: 0.3rem;
+  padding: 8px 10px;
+  background-color: #f2f2f2;
+  color: black;
+  font-size: 0.9rem;
+  font-weight: 400;
+}
+.phone-text{
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 5px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--font-gray);
+}
+.phone-text i{
+  font-size: 1rem;
+}
+.someOne-main button{
+  background-color: var(--red);
+  border: none;
+  color: #fff;
+  padding: 8px 12px;
+  font-weight: 600;
+  border-radius: 0.2rem;
+}
+
+.form {
+  position: relative;
+  width: 100%;
+  height: 40px;
+  /* border: 1px solid red; */
+}
+.form .form__input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 1px solid rgb(204, 204, 204);
+  border-radius: 0.3rem;
+  font-family: inherit;
+  font-size: inherit;
+  color: black;
+  outline: none;
+  padding: 0 1rem;
+  background: none;
+  z-index: 1;
+}
+.form .form__label {
+  position: absolute;
+  left: 0.5rem;
+  top: 0.4rem;
+  padding: 0 0.4rem;
+  color: rgb(142, 142, 142);
+  cursor: text;
+  transition: top 200ms ease-in left 200ms ease-in font-size 200ms ease-in;
+  background-color: white;
+  transition: 0.3s;
+}
+.form__input:focus + .form__label {
+  top: -0.5rem;
+  left: 0.5rem;
+  color: var(--sky-blue);
+  font-size: 0.7rem;
+  font-weight: 500;
+  z-index: 10;
+}
+.form__input:not(:placeholder-shown).form__input:not(:focus) + .form__label {
+  top: -0.5rem;
+  left: 0.5rem;
+  font-size: 0.7rem;
+  font-weight: 500;
+  z-index: 10;
+}
+.form .form__input:focus {
+  border-color: var(--sky-blue);
+}
+.form i {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translate(-50%, -50%);
+  color: #ed2f2f;
+  font-size: 1.2rem;
+}

@@ -1,0 +1,27 @@
+<app-navbar *ngIf="!notAvailRegion "></app-navbar>
+<router-outlet *ngIf="!notAvailRegion "></router-outlet>
+<app-footer *ngIf="!notAvailRegion && router.url === '/'"></app-footer>
+
+
+<!-- <app-navbar *ngIf="!notAvailRegion && !loader"></app-navbar>
+<router-outlet *ngIf="!notAvailRegion && !loader"></router-outlet>
+<app-footer *ngIf="!notAvailRegion && router.url === '/' && !loader"></app-footer> -->
+
+<div *ngIf="notAvailRegion" class="pageNotFound">
+  <div class="pageNotFound-main">
+    <img src="assets\animation\notFound.gif" alt="" />
+    <h3>not availaible in your country/region</h3>
+  </div>
+</div>
+
+<div *ngIf="loader" class="container-fluid">
+  <h1>
+    <span class="let1">l</span>  
+    <span class="let2">o</span>  
+    <span class="let3">a</span>  
+    <span class="let4">d</span>  
+    <span class="let5">i</span>  
+    <span class="let6">n</span>  
+    <span class="let7">g</span>
+  </h1>
+</div>

@@ -1,0 +1,493 @@
+.viewProfile-main {
+  /* border: 1px solid red; */
+  margin-top: 100px;
+}
+.viewSection {
+  display: flex;
+  gap: 30px;
+  width: 100%;
+}
+.view-left {
+  width: 66%;
+  box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.22);
+  border-radius: 0.3rem;
+  overflow: hidden;
+}
+
+.breadCrumb::ng-deep .p-breadcrumb {
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 10px;
+}
+
+.breadCrumb::ng-deep.p-component {
+  font-size: 0.7rem;
+  font-weight: normal;
+}
+.breadCrumb::ng-deep.pi-chevron-right:before {
+  font-size: 0.7rem;
+}
+.drDeatil-main {
+  margin: 0 20px;
+}
+.card-body-left {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 20px 0px;
+  border-bottom: 1px solid var(--gray-border);
+}
+.card-img {
+  width: max-content;
+  border: 2px solid var(--brown);
+  border-radius: 4rem;
+}
+.card-img img {
+  width: 120px;
+}
+.card-content {
+  /* border: 1px solid blue; */
+  display: flex;
+  flex-direction: column;
+  margin-left: 20px;
+}
+.card-content strong {
+  font-weight: 600;
+  font-size: 1.2rem;
+  margin-bottom: 3px;
+}
+.card-content span {
+  font-size: 0.9rem;
+  color: var(--gray);
+}
+.experience {
+  display: flex;
+  gap: 8px;
+  margin-top: 20px;
+}
+.experience-sub {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 3px 0px;
+  color: var(--gray);
+}
+.experience-sub strong {
+  font-size: 0.8rem;
+  margin: 0;
+  padding: 0;
+}
+.experience-sub span {
+  font-size: 0.7rem;
+  color: var(--font-gray);
+}
+.experience-sub1 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 3px 15px;
+  color: var(--gray);
+  border-left: 1px solid var(--gray-border);
+  border-right: 1px solid var(--gray-border);
+}
+.experience-sub1 strong {
+  font-size: 0.8rem;
+  margin: 0;
+  padding: 0;
+}
+.experience-sub1 span {
+  font-size: 0.7rem;
+  color: var(--font-gray);
+}
+
+.review-main {
+  border-bottom: 1px solid var(--gray-border);
+  padding: 20px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+.review-main strong {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+.review-main strong i {
+  font-size: 1.1rem;
+}
+.review-satisfy {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 15px 0;
+  /* border: 1px solid blue; */
+}
+.satisfy-left {
+  width: 50%;
+  /* border: 1px solid black; */
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 8px;
+}
+.satisfy-left span {
+  /* border: 1px solid red; */
+  border-radius: 5rem;
+  padding: 14px 10px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  background-color: var(--gray);
+  color: #fff;
+}
+.satisfy-left p {
+  margin: 0;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--gray);
+}
+.satisfy-right {
+  width: 50%;
+  /* border: 1px solid black; */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.satisfy-progress {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 5px 0;
+}
+.satisfy-progress span {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--font-gray);
+}
+.progress {
+  /* border: 1px solid red; */
+  width: 60%;
+  height: 10px;
+  font-size: 0.7rem;
+}
+.review-comment {
+  border: 1px solid var(--gray-border);
+  border-radius: 0.3rem;
+  padding: 8px;
+  font-size: 0.9rem;
+}
+.review-comment span {
+  color: var(--font-gray);
+}
+.review-main button {
+  border: 1px solid var(--sky-blue);
+  background-color: transparent;
+  border-radius: 0.3rem;
+  color: var(--sky-blue);
+  padding: 5px 8px;
+  font-size: 0.9rem;
+  margin-top: 20px;
+}
+.otherClinic-main {
+  padding: 20px 0;
+  border-bottom: 1px solid var(--gray-border);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+}
+.otherClinic-main strong {
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+.otherClinic-card span {
+  font-weight: 500;
+}
+.otherClinic-card {
+  border: 1px solid var(--gray-border);
+  border-radius: 0.3rem;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 15px;
+  gap: 10px;
+}
+.otherClinic-body {
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+  gap: 10px;
+}
+.otherClinic-cardLeft {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.otherClinic-cardLeft strong {
+  font-size: 0.9rem;
+}
+.otherClinic-cardLeft span {
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: var(--font-gray);
+}
+.otherClinic-cardLeft a {
+  display: flex;
+  align-items: center;
+  font-size: 0.8rem;
+  color: var(--red);
+  cursor: pointer;
+  text-decoration: underline;
+  margin: 5px 0;
+}
+.otherClinic-cardRight {
+  width: 30%;
+}
+.otherClinic-cardRight button {
+  border: 1px solid var(--sky-blue);
+  background-color: transparent;
+  border-radius: 0.3rem;
+  color: var(--sky-blue);
+  padding: 5px 8px;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  gap: 10px;
+}
+
+.otherClinic-collapse {
+  /* border: 1px solid red; */
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  padding-bottom: 25px;
+}
+.otherClinic0collapseLeft {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  font-size: 0.9rem;
+}
+.otherClinic-collapse a {
+  position: absolute;
+  bottom: 10%;
+  right: 0%;
+  transform: translate(0%, 50%);
+  display: flex;
+  align-items: center;
+  font-size: 0.9rem;
+  color: var(--sky-blue);
+  text-decoration: none;
+  cursor: pointer;
+}
+.otherClinic-collapse a i {
+  font-size: 1.2rem;
+}
+
+.services {
+  /* border: 1px solid red; */
+  border-bottom: 1px solid var(--gray-border);
+  padding: 20px 0;
+}
+.service-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.service-header strong {
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+.service-header a {
+  font-size: 0.8rem;
+  color: var(--sky-blue);
+  cursor: pointer;
+}
+.service-body {
+  width: 100%;
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+}
+.service-body ul {
+  width: 49%;
+  margin: 3px 0;
+  padding: 0 18px;
+  font-size: 0.8rem;
+}
+.service-body-view {
+  width: 100%;
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+}
+.service-body-view ul {
+  width: 49%;
+  margin: 3px 0;
+  padding: 0 18px;
+  font-size: 0.8rem;
+}
+.service-body-experience {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.service-body-experience ul {
+  margin: 3px 0;
+  padding: 0 18px;
+  font-size: 0.8rem;
+}
+.service-body-experience span {
+  font-size: 0.9rem;
+  padding: 8px 0;
+  color: var(--font-gray);
+}
+
+.view-right {
+  width: 32.1%;
+}
+
+.scrollToFixedActive {
+  position: fixed;
+  top: 0;
+  width: 27%;
+}
+.drConsultation-card {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  /* margin: 60px 10px; */
+}
+.drConsultation-card .card {
+  box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.22);
+  border: none;
+}
+.drConsultation-card .card-header {
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  border: none;
+  padding: 20px 0 10px 0;
+  margin: 0;
+}
+.drConsultation-card .card-header i {
+  color: var(--sky-blue);
+  font-size: 1.4rem;
+}
+.drConsultation-card .card-header strong {
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: var(--gray);
+}
+.card-body .fee {
+  /* border: 1px solid red; */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--gray-border);
+}
+.card-body .fee span {
+  color: var(--font-gray);
+  font-size: 0.9rem;
+}
+.card-body .fee strong {
+  font-weight: 500;
+  color: var(--gray);
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+.card-body .fee strong i {
+  font-size: 1.2rem;
+}
+.card-body .timing {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+  padding: 8px 0;
+}
+.card-body .timing span {
+  color: var(--green);
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+.card-body .timing strong {
+  font-weight: 500;
+  color: var(--gray);
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.card-body .timing strong i {
+  font-size: 1.2rem;
+}
+.card-body button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-weight: 500;
+  background-color: var(--sky-blue);
+  color: #fff;
+  border: none;
+  border-radius: 0.3rem;
+  padding: 8px 0;
+  width: 100%;
+  margin-top: 20px;
+}
+.card-body button i {
+  font-size: 1.2rem;
+}
+.card-body .bookAppointment-button {
+  font-weight: 500;
+  background-color: var(--red);
+  color: #fff;
+  border: none;
+  border-radius: 0.3rem;
+  padding: 8px 0;
+  width: 100%;
+  margin-top: 20px;
+}
+.weeklyTiming {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  /* border: 1px solid red; */
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--gray);
+}
+.weeklyTiming ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.weeklyTiming ul li {
+  padding: 3px 0;
+}
+.weeklyTiming-left {
+  width: 40%;
+}
+.weeklyTiming-right {
+  width: 60%;
+}

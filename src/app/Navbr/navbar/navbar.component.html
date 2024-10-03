@@ -1,0 +1,748 @@
+<nav *ngIf="router.url === '/'">
+  <section
+    class="navSection-main"
+    [ngClass]="{ navSectionActive: navSectionActive == true }"
+  >
+    <div
+      (scroll)="onscroll()"
+      [ngClass]="{ activeHeader: navbarFixed == true }"
+      class="container-fluid nav-main g-0"
+    >
+      <div class="row g-0">
+        <div class="col-2">
+          <div *ngIf="!navLinkImg" class="logo-main">
+            <img
+              *ngIf="!navImg"
+              routerLink="/"
+              src="assets\Images\logo.png"
+              alt=""
+            />
+            <img
+              *ngIf="navImg"
+              routerLink="/"
+              src="assets\Images\blueLogo.jpeg"
+              alt=""
+            />
+          </div>
+          <div *ngIf="navLinkImg" class="logo-main">
+            <img
+              routerLink="/"
+              src="assets\Images\blueLogo.jpeg"
+              alt=""
+            />
+          </div>
+        </div>
+        <div class="col-10">
+          <div class="navbar">
+            <div
+              class="nav-right"
+              [ngClass]="{ navRightColorActive: navLinkActive == true }"
+            >
+              <ul
+                [ngClass]="{ navRightColorActive: navLinks == true }"
+                *ngIf="router.url === '/'"
+              >
+                <li
+                  (click)="navLink()"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseExample"
+                  aria-expanded="false"
+                  aria-controls="collapseExample"
+                >
+                  Doctors<i class="bx bx-chevron-down"></i>
+                </li>
+                <li (click)="navLink()">
+                  Hospitals<i class="bx bx-chevron-down"></i>
+                </li>
+                <li (click)="navLink()">
+                  Labs & Diagnostics<i class="bx bx-chevron-down"></i>
+                </li>
+                <li (click)="navLink()">
+                  Health<i class="bx bx-chevron-down"></i>
+                </li>
+              </ul>
+            </div>
+            <div class="nav-left">
+              <button class="login">
+                <span
+                  *ngIf="!userName"
+                  (click)="modal()"
+                  [ngClass]="{
+                    navRightColorActive:
+                      navLinks == true || navLinkActive == true
+                  }"
+                >
+                  <i class="bx bxs-user"></i>Login</span
+                >
+                <span
+                  *ngIf="userName"
+                  (click)="sidebarRight()"
+                  [ngClass]="{ navRightColorActive: navLinks == true }"
+                >
+                  <i class="bx bxs-user"></i>{{ userName }}
+
+                  <!-- <div class="collapse" id="collapseExample"> -->
+                  <!-- <ul>
+                    <li><i class='bx bx-log-out'></i>Logout</li>
+                  </ul> -->
+                  <!-- </div> -->
+                </span>
+              </button>
+              <button *ngIf="!userName" class="join">Join as Doctor</button>
+              <button
+                class="toggle"
+                data-bs-toggle="offcanvas"
+                data-bs-target="#offcanvasRight"
+                aria-controls="offcanvasRight"
+              >
+                <i class="bx bx-menu"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- ------------link Collapse------------------ -->
+
+      <div *ngIf="navCollapse" class="navlink-collapse"></div>
+    </div>
+  </section>
+</nav>
+
+<nav *ngIf="router.url !== '/'">
+  <section
+    class="navSection-main activeHeader"
+    [ngClass]="{ navSectionActive: navSectionActive == true }"
+  >
+    <div
+      (scroll)="onscroll()"
+      [ngClass]="{ activeHeader: navbarFixed == true }"
+      class="container-fluid nav-main g-0"
+    >
+      <div class="row g-0">
+        <div class="col-2">
+          <div class="logo-main">
+            <img routerLink="/" src="assets\Images\blueLogo.jpeg" alt="" />
+          </div>
+        </div>
+        <div class="col-10">
+          <div class="navActive-left">
+            <div class="nav-left">
+              <button class="login" style="color: var(--gray)">
+                <i
+                  [ngClass]="{ navRightColorActive: navLinks == true }"
+                  class="bx bxs-user"
+                ></i>
+                <span *ngIf="!userName" (click)="modal()">Login</span>
+                <span *ngIf="userName">{{ userName }} </span>
+              </button>
+              <button *ngIf="!userName" class="join">Join as Doctor</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</nav>
+<!----------------small screen side bar--------------------------------------->
+<p-sidebar [(visible)]="sidebarVisibleRight" position="right">
+  <ng-template pTemplate="header">
+    <img src="assets\Images\blueLogo.jpeg" alt="" />
+  </ng-template>
+  <ng-template pTemplate="content">
+    <div class="logout-main">
+      <div class="logout-header">
+        <i class="bx bx-user"></i>
+
+        <form action="">
+          <div class="form">
+            <input
+              type="text"
+              class="form__input"
+              autocomplete="off"
+              placeholder=" "
+              [value]="userName"
+            />
+            <label for="Designation" class="form__label">Name</label>
+          </div>
+          <div class="form">
+            <input
+              type="text"
+              class="form__input"
+              autocomplete="off"
+              placeholder=" "
+              [value]="getPatientNumber"
+            />
+            <label for="Designation" class="form__label">Phone No.</label>
+          </div>
+          <div class="form">
+            <input
+              type="text"
+              class="form__input"
+              autocomplete="off"
+              placeholder=" "
+              [value]="patientRelation"
+            />
+            <label for="Designation" class="form__label">Relation</label>
+          </div>
+          <button><i class="bx bx-edit"></i>Edit</button>
+        </form>
+      </div>
+      <button (click)="logout()" class="logout">
+        <i class="bx bx-log-out"></i>
+        Logout
+      </button>
+    </div>
+  </ng-template>
+  <!-- <ng-template pTemplate="footer">Footer Content</ng-template> -->
+</p-sidebar>
+<div
+  class="offcanvas offcanvas-end"
+  tabindex="-1"
+  id="offcanvasRight"
+  aria-labelledby="offcanvasRightLabel"
+>
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasRightLabel">Offcanvas right</h5>
+    <button
+      type="button"
+      class="btn-close"
+      data-bs-dismiss="offcanvas"
+      aria-label="Close"
+    ></button>
+  </div>
+  <div class="offcanvas-body">...</div>
+</div>
+
+<!-- ------------Doctor Login Modal------------------------------------------------------- -->
+<p-dialog
+  class="ng-dialog"
+  [(visible)]="modalVisible"
+  [modal]="true"
+  [style]="{ width: '40%' }"
+  [draggable]="false"
+  [resizable]="true"
+>
+  <div *ngIf="modalButtons" class="loginModal-button-main">
+    <img src="assets\Images\blueLogo.jpeg" alt="" />
+    <hr />
+    <div class="loginModal-button">
+      <button (click)="loginAsPatient(false)">As a Patient</button>
+      <button (click)="loginAsDoctor(false)">As a Doctor</button>
+    </div>
+  </div>
+
+  <div *ngIf="displayPatient" class="moadl-main">
+    <form
+      *ngIf="!patientLogin"
+      [formGroup]="patientForm"
+      (ngSubmit)="submitPatientForm(patientForm.value)"
+    >
+      <div class="back-button">
+        <i (click)="modalBack()" class="bx bx-arrow-back"></i>
+      </div>
+      <strong>Enter your Details</strong>
+      <p class="m-0">Please provide below details.</p>
+      <div class="form">
+        <input
+          type="text"
+          class="form__input"
+          autocomplete="off"
+          placeholder=" "
+          formControlName="patienName"
+        />
+        <label for="Designation" class="form__label">Enter your name</label>
+      </div>
+      <div class="form">
+        <input
+          type="number"
+          class="form__input"
+          autocomplete="off"
+          placeholder=" "
+          formControlName="phoneNumber"
+        />
+        <label for="Designation" class="form__label">Phone no.</label>
+      </div>
+      <div class="form">
+        <input
+          type="text"
+          class="form__input"
+          autocomplete="off"
+          placeholder=" "
+          formControlName="relation"
+        />
+        <label for="Designation" class="form__label">Rrelation</label>
+      </div>
+      <!-- <span>I have account? Login</span> -->
+      <button class="patientRegiter-button">
+        Register<i *ngIf="!patientSpinner" class="bx bx-right-arrow-alt"></i>
+        <div
+          *ngIf="patientSpinner"
+          class="spinner-border text-light spinner-border-sm"
+          role="status"
+        >
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      </button>
+    </form>
+    <div *ngIf="patientLogin" class="field">
+      <div class="back-button">
+        <i class="bx bx-arrow-back"></i>
+      </div>
+      <strong>Enter OTP</strong>
+      <p class="m-0" *ngIf="timer <= 0" (click)="resendOtp()">
+        <span>Resend OTP</span>
+      </p>
+      <p class="m-0" *ngIf="timer > 0">
+        Time Remaining: <span>{{ timer }}</span> seconds
+      </p>
+      <form
+        [formGroup]="patientLoginForm"
+        (ngSubmit)="submitPatientLogin(patientLoginForm.value)"
+      >
+        <div class="field">
+          <div class="form">
+            <input
+              type="number"
+              class="form__input"
+              autocomplete="off"
+              placeholder=" "
+              formControlName="patientNo"
+              [(ngModel)]="getPatientNumber"
+            />
+            <label for="Designation" class="form__label">Phone no.</label>
+          </div>
+          <!-- <span>{{getPatientNumber}}</span> -->
+          <div class="form">
+            <input
+              type="number"
+              class="form__input"
+              autocomplete="off"
+              placeholder=" "
+              formControlName="otp"
+            />
+            <label for="Designation" class="form__label">Enter OTP</label>
+          </div>
+        </div>
+        <button class="patienLogin-button">
+          Continue<i *ngIf="!patientSpinner" class="bx bx-right-arrow-alt"></i>
+          <div
+            *ngIf="patientSpinner"
+            class="spinner-border text-light spinner-border-sm"
+            role="status"
+          >
+            <span class="visually-hidden">Loading...</span>
+          </div>
+        </button>
+      </form>
+    </div>
+    <div *ngIf="toastwarning" class="toast-main">
+      <div
+        class="toast show"
+        role="alert"
+        aria-live="assertive"
+        aria-atomic="true"
+        [@zoomIn]
+      >
+        <div class="toast-body">
+          <i class="bx bxs-error-circle"></i>
+
+          <p>Please Fill Out the Fields.</p>
+        </div>
+        <div class="progress"></div>
+      </div>
+    </div>
+    <div *ngIf="resendOtpToast" class="toast-main">
+      <div
+        class="toast show"
+        role="alert"
+        aria-live="assertive"
+        aria-atomic="true"
+        [@zoomIn]
+      >
+        <div class="toast-body">
+          <i class="bx bx-check-circle"></i>
+
+          <p>Sent OTP</p>
+        </div>
+        <div class="success"></div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="loginSection" class="Doctor-Login-main">
+    <div class="back-button">
+      <i (click)="modalBack()" class="bx bx-arrow-back"></i>
+    </div>
+    <img src="assets\Images\blueLogo.jpeg" alt="" />
+    <span>Please provide login credentials below.</span>
+    <form [formGroup]="loginForm" (ngSubmit)="submitLoginForm(loginForm.value)">
+      <div class="form">
+        <input
+          type="text"
+          class="form__input"
+          autocomplete="off"
+          placeholder=" "
+          formControlName="email"
+        />
+        <label for="Designation" class="form__label"
+          >Email or Mobile number</label
+        >
+        <i
+          *ngIf="loginEmail.errors?.['required'] && loginEmail.touched"
+          class="bx bxs-error-circle"
+        ></i>
+      </div>
+      <div class="form">
+        <input
+          type="password"
+          class="form__input"
+          autocomplete="off"
+          placeholder=" "
+          formControlName="password"
+        />
+        <label for="Designation" class="form__label">Password</label>
+        <i
+          *ngIf="Password.errors?.['required'] && Password.touched"
+          class="bx bxs-error-circle"
+        ></i>
+      </div>
+      <a>Forgot Password?</a>
+      <button>Login</button>
+      <p (click)="signup()">Don't have account? Sign Up</p>
+    </form>
+
+    <div *ngIf="toastwarning" class="toast-main">
+      <div
+        class="toast show"
+        role="alert"
+        aria-live="assertive"
+        aria-atomic="true"
+        [@zoomIn]
+      >
+        <div class="toast-body">
+          <i class="bx bxs-error-circle"></i>
+
+          <p>Please Fill Out the Fields.</p>
+        </div>
+        <div class="progress"></div>
+      </div>
+    </div>
+
+    <div *ngIf="error" class="toast-main">
+      <div
+        class="toast show"
+        role="alert"
+        aria-live="assertive"
+        aria-atomic="true"
+        [@zoomIn]
+      >
+        <div class="toast-body">
+          <i class="bx bxs-error-circle"></i>
+
+          <p>{{ loginErr }}</p>
+        </div>
+
+        <div class="progress"></div>
+      </div>
+    </div>
+    <div *ngIf="storeToken" class="toast-main">
+      <div
+        class="toast show"
+        role="alert"
+        aria-live="assertive"
+        aria-atomic="true"
+        [@zoomIn]
+      >
+        <div class="toast-body">
+          <i class="bx bx-check-circle"></i>
+
+          <p>Login Successfully</p>
+        </div>
+        <div class="success"></div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="signUpSection" class="signup-main Doctor-Login-main">
+    <div class="back-button">
+      <i (click)="modalBackSignUp()" class="bx bx-arrow-back"></i>
+    </div>
+    <img src="assets\Images\blueLogo.jpeg" alt="" />
+    <span>Please provide below details.</span>
+    <form [formGroup]="signUp" (ngSubmit)="submitSignUpForm(signUp.value)">
+      <div class="form">
+        <input
+          type="text"
+          class="form__input"
+          autocomplete="off"
+          placeholder=" "
+          formControlName="initialNAme"
+        />
+        <label for="Designation" class="form__label">Mr./Ms./Dr./Prof.</label>
+
+        <i
+          *ngIf="InitialNAme.errors?.['required'] && InitialNAme.touched"
+          class="bx bxs-error-circle"
+        ></i>
+      </div>
+      <div class="form">
+        <input
+          type="text"
+          class="form__input"
+          autocomplete="off"
+          placeholder=" "
+          formControlName="firstName"
+        />
+        <label for="Designation" class="form__label">First Name</label>
+        <i
+          *ngIf="FirstName.errors?.['required'] && FirstName.touched"
+          class="bx bxs-error-circle"
+        ></i>
+      </div>
+
+      <div class="form">
+        <input
+          type="text"
+          class="form__input"
+          autocomplete="off"
+          placeholder=" "
+          formControlName="lastName"
+        />
+        <label for="Designation" class="form__label">Last Name</label>
+        <i
+          *ngIf="LastName.errors?.['required'] && LastName.touched"
+          class="bx bxs-error-circle"
+        ></i>
+      </div>
+      <div class="form">
+        <input
+          type="number"
+          class="form__input"
+          autocomplete="off"
+          placeholder=" "
+          formControlName="generalFees"
+        />
+        <label for="Designation" class="form__label">General Fees</label>
+        <i
+          *ngIf="GeneralFees.errors?.['required'] && GeneralFees.touched"
+          class="bx bxs-error-circle"
+        ></i>
+      </div>
+      <div class="form">
+        <input
+          type="number"
+          class="form__input"
+          autocomplete="off"
+          placeholder=" "
+          formControlName="phoneNo"
+        />
+        <label for="Designation" class="form__label">Phone no.</label>
+        <i
+          *ngIf="PhoneNo.errors?.['required'] && PhoneNo.touched"
+          class="bx bxs-error-circle"
+        ></i>
+      </div>
+      <div class="form">
+        <input
+          type="email"
+          class="form__input"
+          autocomplete="off"
+          placeholder=" "
+          formControlName="email"
+        />
+        <label for="Designation" class="form__label">Email</label>
+        <i
+          *ngIf="Email.errors?.['required'] && Email.touched"
+          class="bx bxs-error-circle"
+        ></i>
+      </div>
+      <div class="gender">
+        <span>Gender</span>
+        <label>
+          <input type="radio" formControlName="gender" value="male" />
+          Male
+        </label>
+
+        <label>
+          <input type="radio" formControlName="gender" value="female" />
+          Female
+        </label>
+      </div>
+
+      <span
+        >By signing up, you agree to oladoc's <a>Terms of use</a> and
+        <a>Privacy Policy</a></span
+      >
+      <button>Sign Up</button>
+    </form>
+
+    <div *ngIf="toastwarning" class="toast-main">
+      <div
+        class="toast show"
+        role="alert"
+        aria-live="assertive"
+        aria-atomic="true"
+        [@zoomIn]
+      >
+        <div class="toast-body">
+          <i class="bx bxs-error-circle"></i>
+
+          <p>Please Fill Out the Fields.</p>
+        </div>
+        <div class="progress"></div>
+      </div>
+    </div>
+
+    <div *ngIf="toastSuccess" class="toast-main">
+      <div
+        class="toast show"
+        role="alert"
+        aria-live="assertive"
+        aria-atomic="true"
+        [@zoomIn]
+      >
+        <div class="toast-body">
+          <i class="bx bx-check-circle"></i>
+
+          <p>Sign Up Successfully</p>
+        </div>
+
+        <div class="success"></div>
+      </div>
+    </div>
+
+    <!-- <div *ngIf="signUpResponse == 'Check Eamil'" class="toast-main">
+      <div
+        class="toast show"
+        role="alert"
+        aria-live="assertive"
+        aria-atomic="true"
+        [@zoomIn]
+      >
+        <div class="toast-body">
+          <i class="bx bx-check-circle"></i>
+
+          <p>{{ signUpResponse }}</p>
+        </div>
+
+        <div class="success"></div>
+      </div>
+    </div> -->
+    <!-- <div *ngIf="signUpResponse == 'Eamil Alraedy Exists'" class="toast-main">
+      <div
+        class="toast show"
+        role="alert"
+        aria-live="assertive"
+        aria-atomic="true"
+        [@zoomIn]
+      >
+        <div class="toast-body">
+          <i class="bx bxs-error-circle"></i>
+
+          <p>{{ signUpResponse }}</p>
+        </div>
+        <div class="progress"></div>
+      </div>
+    </div> -->
+  </div>
+
+  <div *ngIf="drStepsActive" class="dr-services-modal">
+    <p-steps [model]="steps" [(activeIndex)]="activeStep"></p-steps>
+
+    <form action="">
+      <div *ngIf="activeStep === 0" class="doc-vendor">
+        <h4>Doctor Vendor</h4>
+        <div class="doc-select">
+          <ng-select
+            class="custom1"
+            bindLabel="LocationsName"
+            placeholder="City"
+            [clearable]="false"
+          >
+          </ng-select>
+          <ng-select
+            class="custom1"
+            bindLabel="LocationsName"
+            placeholder="vendor"
+            [clearable]="false"
+          >
+          </ng-select>
+        </div>
+      </div>
+
+      <div *ngIf="activeStep === 1" class="doc-vendor">
+        <h4>Select Education</h4>
+        <div class="select-education">
+          <p-calendar [(ngModel)]="date" placeholder="Start Year"></p-calendar>
+          <p-calendar [(ngModel)]="date" placeholder="End Year"></p-calendar>
+        </div>
+        <ng-select
+          class="degree"
+          bindLabel="LocationsName"
+          placeholder="Degree"
+          [clearable]="false"
+        >
+        </ng-select>
+        <hr />
+        <ng-select
+          class="degree"
+          bindLabel="LocationsName"
+          placeholder="University"
+          [clearable]="false"
+        >
+        </ng-select>
+        <ng-select
+          class="degree"
+          bindLabel="LocationsName"
+          placeholder="Type"
+          [clearable]="false"
+        >
+        </ng-select>
+      </div>
+
+      <div *ngIf="activeStep === 2" class="doc-vendor">
+        <h4>Doctor Services</h4>
+        <div class="service-select">
+          <ng-select
+            class="service"
+            bindLabel="LocationsName"
+            placeholder="Hospital"
+            [clearable]="false"
+          >
+          </ng-select>
+          <ng-select
+            class="service"
+            bindLabel="LocationsName"
+            placeholder="Service"
+            [clearable]="false"
+          >
+          </ng-select>
+        </div>
+        <div class="service-input">
+          <input type="text" placeholder="Fee" />
+          <input type="text" placeholder="Discount" />
+          <input type="text" placeholder="Fixed/Percentage" />
+        </div>
+      </div>
+      <div class="previous-next">
+        <div class="previous">
+          <button
+            class="stepButton"
+            *ngIf="activeStep === 1 || activeStep === 2"
+            (click)="previousStep()"
+          >
+            <i class="bx bx-chevron-left"></i>Previous
+          </button>
+        </div>
+        <div *ngIf="activeStep !== 2" class="next">
+          <button class="stepButton" (click)="nextStep()">
+            Next<i class="bx bx-chevron-right"></i>
+          </button>
+        </div>
+        <div *ngIf="activeStep === 2" class="next">
+          <button class="submitButton">Submit</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</p-dialog>

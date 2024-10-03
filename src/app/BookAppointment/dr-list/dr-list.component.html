@@ -1,0 +1,140 @@
+<section class="main">
+  <div class="container-fluid g-0">
+    <div class="row">
+      <div class="col-12">
+        <div class="breadcrumb-main">
+          <div class="breadcrumb-left">
+            <p-skeleton
+              *ngIf="spinner"
+              width="15rem"
+              height="1.5rem"
+              styleClass="mb-2"
+            ></p-skeleton>
+            <p-breadcrumb
+              *ngIf="!spinner"
+              class="breadCrumb"
+              [model]="items"
+            ></p-breadcrumb>
+            <p-skeleton
+              *ngIf="spinner"
+              width="20rem"
+              height="1.5rem"
+              styleClass="mb-2"
+            ></p-skeleton>
+            <h5 *ngIf="!spinner">
+              {{ length }} Best Dentists available for video consultation
+            </h5>
+          </div>
+          <p-skeleton
+            *ngIf="spinner"
+            width="15rem"
+            height="2rem"
+            styleClass="mb-2"
+          ></p-skeleton>
+          <div *ngIf="!spinner" class="breadcrumb-right">
+            <input type="text" placeholder="Search" [(ngModel)]="searchQuery" (input)="handleSearch()" />
+            <i class="bx bx-search-alt"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row p-3" style="background-color: #f9f9f9">
+      <div class="col-12">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div *ngIf="spinner" class="loader">
+                <app-skeleton-dr-list
+                  style="width: 100%"
+                ></app-skeleton-dr-list>
+              </div>
+              <div *ngIf="!spinner">
+                <div *ngIf="DrListResponse.length <= 0" class="notAvailDr">
+                  <img src="assets\animation\notAvailSlot.gif" alt="" />
+                  <h5>No Doctors found at this location</h5>
+                </div>
+               
+                <div *ngIf="DrListResponse.length >= 0">
+                  <p-card
+                    class="ng-card"
+                    *ngFor="let list of displayRecords"
+                  >
+                    <div class="card-body">
+                      <div
+                        class="card-body-left"
+                        routerLink="/appointment/doctors/profile"
+                      >
+                        <div class="card-img">
+                          <img src="assets\Images\profile.png" alt="" />
+                        </div>
+                        <div class="card-content">
+                          <strong
+                            >{{ list.InitialName }} {{ list.FirstName }}
+                            {{ list.LastName }}</strong
+                          >
+                          <span>Dentist, Orthodontist</span>
+                          <span>BDS, SLE, BLS, C-Implant, C-Ortho</span>
+                          <div class="experience">
+                            <div class="experience-sub">
+                              <strong>Under 15 Min</strong>
+                              <span>Wait Time</span>
+                            </div>
+                            <div class="experience-sub1">
+                              <strong>25 Years</strong>
+                              <span>Experience</span>
+                            </div>
+                            <div class="experience-sub">
+                              <strong>99% (138)</strong>
+                              <span>Satisfied Patients</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="card-body-right">
+                        <button class="video">
+                          <i class="bx bxs-video"></i>Video Consultation
+                        </button>
+                        <button
+                          class="appointment"
+                          (click)="bookAppointment(list)"
+                        >
+                          Book Appoinment
+                        </button>
+                      </div>
+                    </div>
+                    <div class="card-footer">
+                      <div class="footer-right">
+                        <span
+                          ><i class="bx bxs-video"></i>Dental Booking Video
+                          Consultation (online)</span
+                        >
+                        <div class="available">
+                          <span>Available tomorrow</span>
+                          <p>$ {{ list.Fees }}</p>
+                        </div>
+                      </div>
+                      <div class="footer-left">
+                        <span>Dentesthetics (G-10/4)</span>
+                        <div class="available">
+                          <span>Available tomorrow</span>
+                          <p>$ 1,000</p>
+                        </div>
+                      </div>
+                    </div>
+                  </p-card>
+
+                  <div *ngIf="isLoading" class="loader">
+                    <app-skeleton-dr-list
+                      style="width: 100%"
+                    ></app-skeleton-dr-list>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

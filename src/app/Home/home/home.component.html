@@ -1,0 +1,455 @@
+<section>
+  <div class="login-bg-img">
+    <!-- <div class="login-bg-overlay"></div> -->
+  </div>
+  <div class="container-fluid search-main">
+    <div class="row">
+      <!-- <div class="col-5">
+        <h1>Find and book the <span> Best Dentists </span>near you</h1>
+      </div> -->
+      <div class="col-12">
+        <h1>
+          Find and book the <span> Best Dentists </span> <br />
+          near you
+        </h1>
+        <form (ngSubmit)="SearchDrList()">
+          <div class="search-input">
+            <!-- <div class="search-areaDr"> -->
+            <ng-select
+              [items]="locations"
+              class="custom1"
+              bindLabel="LocationsName"
+              (change)="onChangeLocation($event)"
+              placeholder="Enter Location or City"
+              [clearable]="false"
+            >
+            </ng-select>
+            <!-- </div> -->
+            <div class="search-button">
+              <button>
+                <span  *ngIf="!searchSpinner">Search</span>
+                <div  *ngIf="searchSpinner" class="spinner-border spinner-border-sm" role="status">
+                  <span class="visually-hidden">Loading...</span>
+                </div>
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="col-8">
+        <div class="search-typwritter">
+          <div class="typwritter">
+            <ngtypewriter [StringList]="list" [speed]="1500"> </ngtypewriter>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div *ngIf="taost" class="toast-main">
+  <div
+    class="toast show"
+    role="alert"
+    aria-live="assertive"
+    aria-atomic="true"
+    [@zoomIn]
+  >
+    <div class="toast-body">
+      <i class="bx bxs-error-circle"></i>
+
+      <p>Please Select your Location.</p>
+    </div>
+    <div class="progress"></div>
+  </div>
+</div>
+<!-- ---------------------Find Section---------------------------------------------------------------- -->
+<section>
+  <!-- <div class="drIimages-main-bg"></div> -->
+  <div class="container find-main">
+    <div class="row">
+      <div class="col-5 g-0">
+        <div class="find-card-right">
+          <div class="card-right">
+            <img src="assets\Images\oladoc-care-img-online-2.svg" alt="" />
+            <i class="bx bxs-video"></i>
+          </div>
+          <div class="card-left">
+            <strong>Dental Care</strong>
+            <p>Video Consultations with Top Specialists in Rs. 1000</p>
+            <button>Book Appointment<i class="bx bx-chevron-right"></i></button>
+          </div>
+        </div>
+      </div>
+      <div class="col-5 g-0">
+        <div class="find-card-left">
+          <div class="card-right">
+            <img src="assets\Images\oladoc-care-img-online-4.svg" alt="" />
+            <i class="bx bxs-video"></i>
+          </div>
+          <div class="card-left">
+            <strong>Dental Care</strong>
+            <p>Video Consultations with Top Specialists in Rs. 1000</p>
+            <button>Book Appointment<i class="bx bx-chevron-right"></i></button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <h3>Find doctors by health concern</h3>
+    </div>
+    <div class="row">
+      <div class="drSerices-main">
+        <div class="drService-card" *ngFor="let list of specialityResponse">
+          <div class="drService-img">
+            <img src="assets\Images\filling.png" alt="" />
+          </div>
+          <div class="drService-tittle">
+            <!-- <span>{{  list.Name }} </span> -->
+            <span
+              >{{
+                list.Name.length > 18
+                  ? (list.Name | slice : 0 : 18) + "..."
+                  : list.Name
+              }}
+            </span>
+          </div>
+        </div>
+      </div>
+      <!-- <div class="col-2">
+        <div class="category-main">
+          <div class="category-img">
+            <img src="assets\Images\filling.png" alt="" />
+          </div>
+          <p>General Denistry</p>
+        </div>
+      </div>
+      <div class="col-2">
+        <div class="category-main">
+          <div class="category-img">
+            <img src="assets\Images\medical.png" alt="" />
+          </div>
+          <p>General Denistry</p>
+        </div>
+      </div>
+      <div class="col-2">
+        <div class="category-main">
+          <div class="category-img">
+            <img src="assets\Images\medical.png" alt="" />
+          </div>
+          <p>General Denistry</p>
+        </div>
+      </div>
+      <div class="col-2">
+        <div class="category-main">
+          <div class="category-img">
+            <img src="assets\Images\medical.png" alt="" />
+          </div>
+          <p>General Denistry</p>
+        </div>
+      </div>
+      <div class="col-2">
+        <div class="category-main">
+          <div class="category-img">
+            <img src="assets\Images\medical.png" alt="" />
+          </div>
+          <p>General Denistry</p>
+        </div>
+      </div> -->
+    </div>
+  </div>
+</section>
+
+<!-- ---------------------Dr List Section---------------------------------------------------------------- -->
+<section class="drList-main">
+  <div class="tooth-img">
+    <img src="assets\Images\tooth.png" alt="" />
+  </div>
+  <div class="container-fluid drList-main g-0">
+    <div class="row g-0">
+      <div class="col-12">
+        <!-- <div class="platium-Dr">
+          <div class="platium-header">
+            <i class="bx bxs-crown"></i>
+            <span>Platium Doctors</span>
+            <i class="bx bx-info-circle"></i>
+          </div>
+          <p>Doctors with exceptional services & patient satisfaction</p>
+        </div> -->
+        <!-- <p-carousel [value]="DrListResponse" [numVisible]="4" [numScroll]="1">
+          <ng-template let-list pTemplate="item">
+            <div class="card drlist-card m-2">
+              <div class="card-body">
+                <div class="drlist-card-img">
+                  <img src="assets\Images\profile.png" alt="" />
+                </div>
+                <strong
+                  >{{ list.InitialName }} {{ list.FirstName }}
+                  {{ list.LastName }}</strong
+                >
+                <span>14 years experience</span>
+                <span>Dentist</span>
+              </div>
+              <div class="card-footer">
+                <div class="col-6">
+                  <strong>1014</strong>
+                  <span>Patient Reviews</span>
+                </div>
+                <div class="col-6">
+                  <strong>98%</strong>
+                  <span>Statisfaction Rate</span>
+                </div>
+              </div>
+            </div>
+          </ng-template>
+        </p-carousel> -->
+        <div class="drList-img">
+          <img src="assets\Images\DrListImg.jpg" alt="" />
+
+          <div class="platium-Dr">
+            <div class="platium-header">
+              <i class="bx bxs-crown"></i>
+              <span>Platium Doctors</span>
+              <i class="bx bx-info-circle"></i>
+            </div>
+            <p>Doctors with exceptional services & patient satisfaction</p>
+          </div>
+
+          <div class="drList">
+            <p-carousel
+              class="carousel-list"
+              [value]="DrListResponse"
+              [numVisible]="3"
+              [numScroll]="3"
+            >
+              <ng-template let-list pTemplate="item">
+                <div class="card drlist-card m-2">
+                  <div class="card-body">
+                    <div class="drlist-card-img">
+                      <img src="assets\Images\profile.png" alt="" />
+                    </div>
+                    <strong
+                      >{{ list.InitialName }} {{ list.FirstName }}
+                      {{ list.LastName }}</strong
+                    >
+                    <span>14 years experience</span>
+                    <span>Dentist</span>
+                  </div>
+                  <div class="card-footer">
+                    <div class="col-6">
+                      <strong>1014</strong>
+                      <span>Patient Reviews</span>
+                    </div>
+                    <div class="col-6">
+                      <strong>98%</strong>
+                      <span>Statisfaction Rate</span>
+                    </div>
+                  </div>
+                </div>
+              </ng-template>
+            </p-carousel>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="drIimages-main">
+  <div class="drIimages-main-bg"></div>
+  <div class="container">
+    <div class="row g-0 d-flex align-items-center">
+      <div class="col-6">
+        <div class="drSection-content">
+          <h2>Can’t wait to get into an office? We can help!</h2>
+          <p>
+            We understand that sometimes you need to speak with a dentist right
+            away. Our partners at Denteractive have pre-screened,
+            board-certified dentists who can provide advice, some non-narcotic
+            prescriptions, and help manage your pain over secure chat or video
+            immediately, 7 days a week.
+          </p>
+          <button>
+            Connect With a Dentist Now <i class="bx bx-right-arrow-alt"></i>
+
+            <div class="slide-border"></div>
+          </button>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="drIimages-img">
+          <img src="assets\Images\123.png" alt="" />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="drIimages-center">
+  <div class="container pt-5">
+    <div class="row">
+      <div class="col-7">
+        <img src="assets\Images\drImages.png" alt="" />
+      </div>
+      <div class="col-5 d-flex align-items-end">
+        <div class="drImage-content">
+          <ul>
+            <li>
+              <div class="arrow"><i class="bx bx-arrow-back"></i></div>
+              <span
+                >Appointments on your time with Chat Now and Video Visit
+                Options</span
+              >
+            </li>
+            <li>
+              <div class="arrow"><i class="bx bx-arrow-back"></i></div>
+              <span
+                >Learn what other patients had to say before you book an
+                appointment</span
+              >
+            </li>
+            <li>
+              <div class="arrow"><i class="bx bx-arrow-back"></i></div>
+              <span
+                >Find doctors that take your insurance including Medicare and
+                Medicaid</span
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="drIimages-main">
+  <div class="drIimages-main-bg"></div>
+  <div class="container">
+    <div class="row g-0 d-flex align-items-center">
+      <div class="col-6">
+        <div class="drSection-content">
+          <h1>Hey, Dentists!</h1>
+          <span
+            >Looking to grow your practice? Join the platform with everything
+            you need to grow your practice and level up the care you
+            provide.</span
+          >
+          <button>Sign up today</button>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="drIimages-img">
+          <img
+            class="drIimages-img-width"
+            src="assets\Images\heyDe.png"
+            alt=""
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- <section class="drIimages-main">
+  <div class="better-choice-main">
+    <div class="better-choice-right">
+      <div class="better-choice-content">
+        <h1>Hey, Dentists!</h1>
+        <span
+          >Looking to grow your practice? Join the platform with everything you
+          need to grow your practice and level up the care you provide.</span
+        >
+        <button>Sign up today</button>
+      </div>
+    </div>
+    <div class="better-choice-left">
+      <div class="vectorImg">
+        <img src="assets\Images\dentist-signup-illustration.png" alt="" />
+      </div>
+    </div>
+  </div>
+</section> -->
+
+<!-- ---------------------Looking For more Section---------------------------------------------------------------- -->
+<section>
+  <div class="container g-0 looking-main">
+    <div class="row">
+      <h3>Looking For More?</h3>
+    </div>
+    <div class="row d-flex align-items-center justify-content-center">
+      <div class="col-3">
+        <div class="looking-img">
+          <img src="assets\Images\microscope.png" alt="" />
+          <p>Book Medical Tests</p>
+        </div>
+      </div>
+      <div class="col-3">
+        <div class="looking-img">
+          <img src="assets\Images\medical-history.png" alt="" />
+          <p>Read Health Articles</p>
+        </div>
+      </div>
+      <div class="col-3">
+        <div class="looking-img">
+          <img src="assets\Images\information.png" alt="" />
+          <p>Ask a Question</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ---------------------Review Section---------------------------------------------------------------- -->
+<section class="reviewSection-main">
+  <div class="container review-main">
+    <div class="row">
+      <h3>Over 200,000 user recommendations</h3>
+    </div>
+    <div class="row reviewCard-row">
+      <p-carousel [value]="items" [numVisible]="3" [numScroll]="1">
+        <ng-template let-item pTemplate="item">
+          <!-- <div class="card review-card m-2">
+            <div class="card-header">
+              <i class="bx bxs-star"></i>
+              <i class="bx bxs-star"></i>
+              <i class="bx bxs-star"></i>
+              <i class="bx bxs-star"></i>
+              <i class="bx bxs-star"></i>
+            </div>
+            <div class="card-body">
+              <p>
+                "Great platform, very efficient and works really well on both
+                phone and web. I think this is the most easiest way of booking
+                appointments in Pakistan as it has made the whole process much
+                more efficient."
+              </p>
+              <div class="review-img">
+                <img src="assets\Images\profile.png" alt="" />
+              </div>
+              <span>Shayan Sheikh</span>
+            </div>
+          </div> -->
+
+          <div class="card reviewCard">
+            <div class="reviewCard-img">
+              <!-- <img src="assets\Images\people1.png" alt=""> -->
+            </div>
+            <div class="card-body">
+              <p>
+                Great platform, very efficient and works really well on both
+                phone and web
+              </p>
+              <p-rating
+                [(ngModel)]="value"
+                [readonly]="true"
+                [cancel]="false"
+              ></p-rating>
+              <hr />
+              <strong>Muhammad Shayan</strong>
+            </div>
+          </div>
+        </ng-template>
+      </p-carousel>
+    </div>
+  </div>
+</section>
+
+<p-scrollTop [threshold]="200"></p-scrollTop>

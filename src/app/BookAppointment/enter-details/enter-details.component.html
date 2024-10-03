@@ -1,0 +1,137 @@
+<section class="main">
+  <div class="container">
+    <div class="row">
+      <div class="col-8 p-4">
+        <div class="card">
+          <div class="card-header">
+            <strong>Appointment For</strong>
+            <div class="sub-header">
+              <span><i class="bx bx-check"></i>{{ patientRelation }}</span>
+              <p (click)="someoneElse()">
+                <i class="bx bx-plus"></i>Someone else
+              </p>
+            </div>
+          </div>
+          <div class="card-body">
+            <strong><i class="bx bx-user"></i>Patient Name</strong>
+            <input
+              [(ngModel)]="patientName"
+              type="text"
+              placeholder="Enter your name"
+              disabled
+            />
+            <div class="sub-body">
+              <strong>Phone Number</strong>
+              <span>+{{ getPatientNumber }}</span>
+            </div>
+            <span
+              ><i class="bx bx-error-circle"></i> You will be contacted through
+              this number</span
+            >
+          </div>
+          <div class="card-footer">
+            <strong><i class="bx bx-wallet"></i> Select Payment Method</strong>
+            <div class="sub-footer">
+              <span><input type="radio" checked />Online Payment</span>
+              <span>$ 100.0</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-4 p-4">
+        <div class="card-profile">
+          <div class="card-body-profile">
+            <div class="body-profile">
+              <img src="assets\Images\people1.png" alt="" />
+            </div>
+            <div class="profile-tittle">
+              <strong>{{ doctorName }}</strong>
+              <span>Dentist, Cosmetic Dentist</span>
+              <span>Video consultation: <strong>$100.0</strong></span>
+              <p><i class="bx bx-time"></i>{{ bookSlotTIme }}</p>
+            </div>
+          </div>
+          <div class="card-footer">
+            <button (click)="confirmBooking()">
+              <span *ngIf="!spinner">Confirm Booking</span>
+              <div
+                *ngIf="spinner"
+                class="spinner-border spinner-border-sm text-light"
+                role="status"
+              >
+                <span class="visually-hidden">Loading...</span>
+              </div>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ----------------------MOdal------------------------------- -->
+<p-dialog
+  class="confirmModal"
+  [(visible)]="confirmPopup"
+  [modal]="true"
+  [style]="{ width: '30vw' }"
+  [draggable]="false"
+  [resizable]="false"
+>
+  <div class="confirm">
+    <i class="bx bxs-badge-check"></i>
+    <p>Booked Appointment Successfully</p>
+    <!-- <button>Go to Home</button> -->
+  </div>
+</p-dialog>
+
+<p-dialog
+  header="Add a Family Member"
+  [(visible)]="showModalSomeOne"
+  [style]="{ width: '40vw' }"
+  [modal]="true"
+  [draggable]="false"
+  [resizable]="false"
+>
+  <div class="someOne-main">
+    <div class="patientName-main">
+      <div class="patient-input">
+        <div class="form">
+          <input
+            type="text"
+            class="form__input"
+            autocomplete="off"
+            placeholder=" "
+          />
+          <label for="Designation" class="form__label">Patient Name</label>
+        </div>
+      </div>
+      <div class="patient-input">
+        <div class="form">
+          <input
+            type="text"
+            class="form__input"
+            autocomplete="off"
+            placeholder=" "
+          />
+          <label for="Designation" class="form__label">Relation</label>
+        </div>
+      </div>
+    </div>
+    <div class="patient-input">
+      <label>Gender</label>
+      <div class="gender-input">
+        <span><i class="bx bx-check"></i>Male</span>
+        <span><i class="bx bx-check"></i>Female</span>
+      </div>
+    </div>
+    <div class="patient-input">
+      <label for="">Phone Number</label>
+      <span class="phone-input">+{{ getPatientNumber }}</span>
+      <span class="phone-text"
+        ><i class="bx bx-error-circle"></i> You will be contacted through this
+        number</span
+      >
+    </div>
+    <button>Add Family Member</button>
+  </div>
+</p-dialog>
